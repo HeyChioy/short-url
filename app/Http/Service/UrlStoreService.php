@@ -27,7 +27,7 @@ class UrlStoreService {
         if(!is_null($u)){
             $this->result['status'] = 'FAILED';
             $this->result['status_code'] = 403;
-            $this->result['message'] = '很遗憾 '.url($shortKey).' 已被使用 QAQ ';
+            $this->result['message'] = 噢~你发现了别人的宝藏！;
             $this->result['url'] = $u->uri;
             return false;
         }
