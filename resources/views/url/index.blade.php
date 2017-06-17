@@ -41,7 +41,7 @@
             </div>
         </div>
         {!! Form::close() !!}
-        <span v-if="err_msg" class="text-danger">@{{ err_msg }}</span>
+        <span v-if="err_msg" class="text-info">@{{ err_msg }}</span>
         <h1>链接</h1>
         <a v-bind:href="shortUrl" target="_blank">@{{ shortUrl }}</a>
     </div>

@@ -27,7 +27,7 @@ class UrlStoreService {
         if(!is_null($u)){
             $this->result['status'] = 'FAILED';
             $this->result['status_code'] = 403;
-            $this->result['message'] = 噢~你发现了别人的宝藏！;
+            $this->result['message'] = '噢~你发现了别人的宝藏！';
             $this->result['url'] = $u->uri;
             return false;
         }
@@ -36,7 +36,7 @@ class UrlStoreService {
         if(!is_null($u)){
             $this->result['status'] = 'FAILED';
             $this->result['status_code'] = 403;
-            $this->result['message'] = 'URL 已存在！';
+            $this->result['message'] = '来晚一步，这个 URL 已经有人转过啦！！哈哈哈哈！！';
             $this->result['url'] = url($u->shortKey);
             return false;
         }
