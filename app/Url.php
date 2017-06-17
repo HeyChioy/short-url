@@ -13,7 +13,7 @@ class Url extends Model
         parent::__construct($attributes);
     }
 
-    private static function getData(){
+    public static function getSummary(){
         $result_set = self::all();
         $all = $result_set->groupBy('scheme')->all();
 
@@ -37,16 +37,4 @@ class Url extends Model
         return $array;
     }
 
-    public static function summary()
-    {
-        return self::getData();
-    }
-
-    public function scopeUri($query,$uri){
-        return $query->where('uri',$uri)->get();
-    }
-
-    public function scopeShortKey($query,$shortKey){
-        return $query->where('shortKey',$shortKey)->get();
-    }
 }

@@ -26,7 +26,7 @@ Route::get('/api/token',function(){
 
 Route::get('/api/summary',function(){
     $result = array('status' => 'success', 'status_code' => 200);
-    $result['summary'] = \App\Url::summary();
+    $result['summary'] = \App\Url::getSummary();
     return $result;
 });
 
@@ -35,5 +35,7 @@ Route::get('/{shortKey}', function(\App\Url $url){
     if($url->scheme == 'file'){
         return view('url.redirect',compact('uri'));
     }
+    $url->visit_time++;
+    $url->save();
     return redirect($uri);
 });

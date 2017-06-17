@@ -3,7 +3,7 @@
  */
 $(function () {
     const myChart = echarts.init(document.getElementById('summary'));
-    option = {
+    const option = {
         title : {
             text: '协议概览',
             x:'center'
@@ -47,10 +47,10 @@ $(function () {
                 const me = this;
                 $.get('/api/token','',function (token) {
                    $.post('/api/create',{_token:token,url:me.url,shortKey:me.shortKey},function (data) {
+                       me.shortUrl = data.url;
                        if(data.status_code === 200){
-                           me.shortUrl = data.url;
                            me.err_msg = '';
-                            me.reloadChart();
+                           me.reloadChart();
                        }else {
                            me.err_msg = data.message;
                        }

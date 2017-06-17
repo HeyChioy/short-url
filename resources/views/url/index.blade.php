@@ -27,9 +27,11 @@
                         'class' => 'form-control',
                         'placeholder' => '自定义短链',
                         'autoComplete' => 'off',
+
                         'v-model' => 'shortKey'
                     ]) !!}
                 </div>
+                {{--'pattern' => '[0-9A-Za-z]{3,12}',--}}
                 <div class="col-xs-12 col-sm-3 col-lg-3">
                     {!! Form::button('转', [
                         'class' => 'btn btn-primary col-xs-12',
@@ -40,7 +42,7 @@
         </div>
         {!! Form::close() !!}
         <span v-if="err_msg" class="text-danger">@{{ err_msg }}</span>
-        <h1>短链</h1>
+        <h1>链接</h1>
         <a v-bind:href="shortUrl" target="_blank">@{{ shortUrl }}</a>
     </div>
     <hr>

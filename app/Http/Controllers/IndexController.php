@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UrlRequest;
+use App\Http\Service\UrlStoreService;
 use App\Url;
 use Illuminate\Http\Request;
 
@@ -21,17 +22,17 @@ class IndexController extends Controller
     {
         $url = $request->get('url');
         if(!$url || !filter_var($url, FILTER_VALIDATE_URL)){
-            return ['status' => 'failed', 'status_code' => 403, 'message' => 'The url format is invalid.'];
+            return ['status' => 'FAILED', 'status_code' => 403, 'message' => '非法的 URL '];
         }
 
         $randomShortKey = str_random(10);
         $customShortKey = $request->get('shortKey');
         $shortKey = $randomShortKey;
-        if( $customShortKey && is_null(Url::shortKey($customShortKey)->first())){
+        if($customShortKey){
             $shortKey = $customShortKey;
         }
-        $u = $this->save($url,$shortKey);
-        return ['status' => 'success', 'status_code' => 200, 'url' => url($u->shortKey)];
+        $service = new UrlStoreService();
+        return $service->store($url,$shortKey);
     }
 
     public function save($url,$shortKey)
